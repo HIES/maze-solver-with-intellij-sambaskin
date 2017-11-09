@@ -30,12 +30,12 @@ public class Maze
     {
         boolean isFinished = false;
 
-
+        return isFinished;
     }
 
     private boolean isValid(int row, int col)
     {
-        if(row>=0 && col>= 0 && board[row][col].isWall()==false)
+        if(row>=0 && col>= 0 && board[row][col].isWall()==false && row < board.length && col < board[0].length)
             return true;
 
         return false;
