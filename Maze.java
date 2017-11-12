@@ -72,7 +72,7 @@ public class Maze {
             while (strands > 0) {
                 strands--;
 
-                int timer = (int) (Math.random() * squareLength*.4);
+                int timer = (int) (Math.random() * squareLength*p);
                 int r = (int) (Math.random() * squareLength);
                 int c = (int) (Math.random() * squareLength);
                 while (timer > 0) {
@@ -80,7 +80,7 @@ public class Maze {
                     if (changeDir > .75) {
                         direction = (int) (4 * Math.random());
                     }
-                    //random start. Moves in direction and changes. random lenth
+                    //random start. Moves in direction and changes. random length
                     double rand = Math.random();
                     if (r > 0 && c > 0 && r < squareLength - 1 && c < squareLength - 1) {
                         newMaze[r][c] = 0;
@@ -190,19 +190,20 @@ public class Maze {
     public static void main(String[] args) {
 
         StdDraw.enableDoubleBuffering();
-        int[][] maze = {{1, 1, 0, 0, 0, 0, 0, 0, 0, 0},
-                {0, 1, 1, 1, 1, 0, 1, 1, 1, 0},
-                {0, 1, 1, 1, 1, 0, 1, 1, 0, 0},
-                {0, 1, 0, 1, 1, 1, 1, 1, 1, 1},
-                {0, 1, 0, 0, 0, 0, 0, 1, 1, 1},
-                {0, 1, 1, 0, 1, 1, 1, 1, 1, 1},
-                {0, 0, 1, 0, 0, 1, 0, 1, 0, 0},
-                {0, 1, 1, 0, 1, 1, 0, 1, 1, 0},
-                {0, 1, 1, 0, 1, 1, 0, 1, 1, 0},
-                {0, 0, 0, 0, 0, 0, 0, 0, 1, 1}};
+//        int[][] maze = {{1, 1, 0, 0, 0, 0, 0, 0, 0, 0},
+//                {0, 1, 1, 1, 1, 0, 1, 1, 1, 0},
+//                {0, 1, 1, 1, 1, 0, 1, 1, 0, 0},
+//                {0, 1, 0, 1, 1, 1, 1, 1, 1, 1},
+//                {0, 1, 0, 0, 0, 0, 0, 1, 1, 1},
+//                {0, 1, 1, 0, 1, 1, 1, 1, 1, 1},
+//                {0, 0, 1, 0, 0, 1, 0, 1, 0, 0},
+//                {0, 1, 1, 0, 1, 1, 0, 1, 1, 0},
+//                {0, 1, 1, 0, 1, 1, 0, 1, 1, 0},
+//                {0, 0, 0, 0, 0, 0, 0, 0, 1, 1}};
 
         //int[][] maze = generateMaze(30, .23);           //RANDOMLY GENERATE MAZE (comment out to run hardcoded)
-        //int[][] maze = generateMazeNatural(30, .5, 50); //MAZE LOOKS MORE NATURAL (comment out to run pure random)
+        int[][] maze = generateMazeNatural(100, 0.2,400); //MAZE LOOKS MORE NATURAL (comment out to run pure random)
+        //P changes how long each strand is, strands determines how many strands there are
         Maze geerid = new Maze(maze.length, maze[0].length, maze); //Switch
         geerid.draw();
         geerid.findPath(0, 0);
